@@ -1,4 +1,5 @@
 require 'slack-ruby-bot'
+require 'httparty'
 
 class Memer < SlackRubyBot::Bot
   command 'ping' do |client, data, match|
@@ -18,7 +19,16 @@ class Memer < SlackRubyBot::Bot
   end
 
   match /I'm going to (.+)/ do |client, data, match|
-    client.say(text: "One does not simply #{match[1]}", channel: data.channel)
+    template_id = 61579
+    username = ENV['IMGFLIP_USERNAME']
+    password = ENV['IMGFLIP_PASSWORD']
+    response = HTTParty.post("https://api.imgflip.com/caption_image",
+                             body: {
+                               template_id: template_id,
+                               username: username,
+                               password: password,
+                             })
+    client.say(text: response.body, channel: data.channel)
   end
 end
 
