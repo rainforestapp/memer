@@ -32,6 +32,8 @@ class Memer < SlackRubyBot::Bot
                                text1: match[1],
                              })
     answer = JSON.parse(response.body)
+    puts "ANSWER"
+    puts answer.inspect
     if answer['success']
       client.say(text: answer['url'], channel: data.channel)
     else
