@@ -6,6 +6,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.1)
+      public_suffix (~> 2.0, >= 2.0.2)
     celluloid (0.17.3)
       celluloid-essentials
       celluloid-extras
@@ -32,6 +34,15 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.11.0.1)
       faraday (>= 0.7.4, < 1.0)
+    faraday_middleware-parse_oj (0.3.2)
+      faraday (~> 0.9)
+      faraday_middleware (>= 0.9.1, < 1.0)
+      oj (>= 2.0, < 4.0)
+    giphy (3.0.0)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.9)
+      faraday_middleware-parse_oj (~> 0.3)
+      launchy (~> 2.4)
     gli (2.16.0)
     hashie (3.5.5)
     hitimes (1.2.5)
@@ -39,10 +50,14 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.8.4)
     json (2.1.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     minitest (5.10.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nio4r (2.1.0)
+    oj (3.3.0)
+    public_suffix (2.0.5)
     slack-ruby-bot (0.10.4)
       hashie
       slack-ruby-client (>= 0.6.0)
@@ -68,6 +83,7 @@ PLATFORMS
 
 DEPENDENCIES
   celluloid-io
+  giphy
   httparty
   slack-ruby-bot
 
