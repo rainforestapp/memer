@@ -16,6 +16,10 @@ class Memer < SlackRubyBot::Bot
   command 'cheer me up' do |client, data, match|
     client.say(gif: 'happy', channel:data.channel)
   end
+
+  command "I'm going to (.+)" do |client, data, match|
+    client.say(text: "One does not simply #{match[1]}", channel: data.channel)
+  end
 end
 
 Memer.run
