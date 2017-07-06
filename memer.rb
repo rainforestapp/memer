@@ -1,5 +1,6 @@
 require 'slack-ruby-bot'
 require 'httparty'
+require 'json'
 
 class Memer < SlackRubyBot::Bot
   command 'ping' do |client, data, match|
@@ -30,7 +31,12 @@ class Memer < SlackRubyBot::Bot
                                text0: "One does not simply",
                                text1: match[1],
                              })
-    client.say(text: response.body, channel: data.channel)
+    answer = JSON.parse(response.body)
+    if answer['success']
+      client.say(text: answer['url'], channel: data.channel)
+    else
+      client.say(text: "EEEERRRRRRORRRZ!!!!! #{answer['error_message']}", channel: data.channel)
+    end
   end
 end
 
