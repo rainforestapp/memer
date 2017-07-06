@@ -27,6 +27,8 @@ class Memer < SlackRubyBot::Bot
                                template_id: template_id,
                                username: username,
                                password: password,
+                               text0: "One does not simply",
+                               text1: match[1],
                              })
     client.say(text: response.body, channel: data.channel)
   end
