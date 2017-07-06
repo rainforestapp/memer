@@ -35,7 +35,7 @@ class Memer < SlackRubyBot::Bot
     puts "ANSWER"
     puts answer.inspect
     if answer['success']
-      client.say(text: answer['url'], channel: data.channel)
+      client.say(text: answer['data']['url'], channel: data.channel)
     else
       client.say(text: "EEEERRRRRRORRRZ!!!!! #{answer['error_message']}", channel: data.channel)
     end
